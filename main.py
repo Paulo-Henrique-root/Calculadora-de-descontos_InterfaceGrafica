@@ -3,27 +3,50 @@ import tkinter #PAra poder chamar a função toplevel.
 from tkinter import messagebox
 import webbrowser
 
-def sobredados():
-    app2 = tkinter.Toplevel() #Utilizado quando for uma segunda janela, para poder usar junto com o app2.grab_set().
-    app2.title("Sobre")
-    app2.geometry("250x250+550+245")
-    app2.configure(background="#062F4F")
-    app2.grab_set() #Não permitir mexer na janela abaixo dessa.
-    app2.resizable(width=False, height=False)  #Proibe modificar o tamanho da janela.
+def comousar():
+    app6 = tkinter.Toplevel()
+    app6.title("Introdução")
+    app6.geometry("250x250+550+245")
+    app6.configure(background="#062F4F")
+    app6.grab_set()
+    app6.resizable(width=False, height=False)
 
-    framesobre = Frame(app2, borderwidth=2, relief="solid")
-    framesobre.place(x=10, y=10, width=230, height=230)
-    framesobre.configure(background="#062F4F")
+    Label(app6, text="Em uma prestação de serviços com paga-", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=10, width=240, height=15)
+    Label(app6, text="mentos mensais,  podemos calcular o ", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=25, width=240, height=15)
+    Label(app6, text="quanto foi utilizado pelo cliente.", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=40, width=240, height=15)
+    Label(app6, text="Exemplo: Um cliente tem o plano de R$50", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=65, width=240, height=15)
+    Label(app6, text="e utilizou somente 12 dias,  colocando no", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=80, width=240, height=15)
+    Label(app6, text="programa essas duas informações (Valor", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=95, width=240, height=15)
+    Label(app6, text="do plano e dias utilizados) conseguimos", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=110, width=240, height=15)
+    Label(app6, text="obter o valor exato de desconto e quanto", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=125, width=240, height=15)
+    Label(app6, text="o cliente precisa pagar.", background="#062F4F", foreground="#fff", font="arial 8 bold", anchor=W).place(x=8, y=140, width=240, height=15)
 
-    Label(framesobre, text="Calculadora de descontos BRCOM\n Versão - 1.0", background="#062F4F", foreground="#fff", font="arial 9 bold").place(x=15, y=8, width=200, height=30)
-    Label(framesobre, text="Desenvolvedor: Paulo Henrique", background="#062F4F", foreground="#fff", font="arial 9 bold").place(x=15, y=177, width=200, height=20)
-    Label(framesobre, text="Contato: paulo.junior.ph@gmail.com", background="#062F4F", foreground="#fff", font="arial 9 bold").place(x=10, y=201, width=205, height=20)
-    app2.mainloop()
+    app6.mainloop()
 
 def novo():
     principal()
 
 def principal():
+    def sobredados():
+        app2 = tkinter.Toplevel()  # Utilizado quando for uma segunda janela, para poder usar junto com o app2.grab_set().
+        app2.title("Sobre")
+        app2.geometry("250x250+550+245")
+        app2.configure(background="#062F4F")
+        app2.grab_set()  # Não permitir mexer na janela abaixo dessa.
+        app2.resizable(width=False, height=False)  # Proibe modificar o tamanho da janela.
+
+        framesobre = Frame(app2, borderwidth=2, relief="solid")
+        framesobre.place(x=10, y=10, width=230, height=230)
+        framesobre.configure(background="#062F4F")
+
+        Label(framesobre, text="Calculadora de descontos BRCOM\n Versão - 1.0", background="#062F4F", foreground="#fff",font="arial 9 bold").place(x=15, y=9, width=200, height=30)
+        Label(framesobre, text="Desenvolvedor: Paulo Henrique", background="#062F4F", foreground="#fff",font="arial 9 bold").place(x=15, y=70, width=200, height=20)
+        Label(framesobre, text="Contato: paulo.junior.ph@gmail.com", background="#062F4F", foreground="#fff",font="arial 9 bold").place(x=10, y=90, width=205, height=20)
+        Button(framesobre, text="Código fonte", background="#233237", foreground="#fff", font=("arial", 9, "bold"), command=senha).place(x=15, y=165, width=80, height=30)
+        Button(framesobre, text="Introdução", background="#233237", foreground="#fff", font=("arial", 9, "bold"), command=comousar).place(x=130, y=165, width=80, height=30)
+
+        app2.mainloop()
+
     def cores():
         app3 = tkinter.Toplevel() #Utilizado quando for uma segunda janela, para poder usar junto com o app2.grab_set().
         app3.title("Cores")
@@ -31,7 +54,6 @@ def principal():
         app3.configure(background="#062F4F")
         app3.grab_set() #Não permitir mexer na janela abaixo dessa.
         app3.resizable(width=False, height=False)
-
 
         azul = StringVar()
         verde = StringVar()
@@ -161,10 +183,10 @@ def principal():
             app4.resizable(width=False, height=False)
             app4.grab_set()
 
-            Button(app4, text="GitHub - Link", background="#233237", foreground="#fff", font=("arial", 9, "bold"), command=lambda: webbrowser.open('https://github.com/paulo-hj/Calculadora-de-descontos_InterfaceGrafica')).place(x=36, y=45, width=80, height=35)
+            Button(app4, text="GitHub - Link", background="#233237", foreground="#fff", font=("arial", 9, "bold"), command=lambda: webbrowser.open('https://github.com/paulo-hj/Calculadora-de-descontos_InterfaceGrafica')).place(x=36, y=44, width=80, height=35)
 
     app = Tk()
-    app.title("BRCOM")
+    app.title("Calculadora de descontos")
     app.geometry("470x350+440+180")
     app.configure(background="#062F4F")
     app.resizable(width=False, height=False) #Proibe modificar o tamanho da janela.
@@ -225,9 +247,9 @@ def principal():
 
     sobremenu = Menu(barramenus)
     sobremenu = Menu(sobremenu, tearoff=0) #Tira um tracejado que vem por padrão nos menu.
-    barramenus.add_cascade(label="Sobre", menu=sobremenu)
+    barramenus.add_cascade(label="Ajuda", menu=sobremenu)
     sobremenu.add_command(label="Código fonte", command=senha)
-    sobremenu.add_command(label="Sobre", command=sobredados)
+    sobremenu.add_command(label="Introdução", command=comousar)
 
     app.config(menu=barramenus)
     ######################
