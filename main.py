@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter #PAra poder chamar a função toplevel.
 from tkinter import messagebox
+import webbrowser
 
 def sobredados():
     app2 = tkinter.Toplevel() #Utilizado quando for uma segunda janela, para poder usar junto com o app2.grab_set().
@@ -93,8 +94,7 @@ def principal():
         app3.mainloop()
 
     def resetar():  # Função para resetar todos os campos.
-        res = messagebox.askyesno("Limpar",
-                                  "Deseja limpar todos os campos?")  # Primeiro é passado o titulo e depois a mensagem.
+        res = messagebox.askyesno("Limpar", "Deseja limpar todos os campos?")  # Primeiro é passado o titulo e depois a mensagem.
         if (res == True):
             #v1.delete(0, END)
             #v2.delete(0, END)
@@ -126,6 +126,42 @@ def principal():
                 v5["text"] = "Dias utilizados não pode ser maior que 30."
         except ValueError:
             messagebox.showerror(title="Erro", message="Digite somente números inteiros.")
+
+    def senha():
+        def githubt():
+            vsenha1 = str(vsenha.get())
+            vn = vsenha1 == "GAEL"
+            if vn == True:
+                app5.destroy()
+                codigourl()
+            else:
+                senhaerro["text"] = "Autenticação falhou"
+
+        app5 = tkinter.Toplevel()
+        app5.title("Autenticação")
+        app5.geometry("151x130+601+273")
+        app5.configure(background="#062F4F")
+        app5.resizable(width=False, height=False)
+        app5.grab_set()
+
+        Label(app5, text="Digite a palavra chave", background="#062F4F", foreground="#fff", font=("arial", 8, "bold")).place(x=2, y=10, width=150, height=20)
+        vsenha = Entry(app5)
+        vsenha.place(x=37, y=30, width=80, height=25)
+        senhaerro = Label(app5, text="", background="#062F4F", foreground="#fff", font=("arial", 7, "bold"))
+        senhaerro.place(x=26, y=100, width=100, height=23)
+        vsenha.focus()
+
+        Button(app5, text="Autenticar", command=githubt).place(x=45, y=67, width=65, height=23)
+
+        def codigourl():
+            app4 = tkinter.Toplevel()
+            app4.title("Link")
+            app4.geometry("150x130+601+273")
+            app4.configure(background="#062F4F")
+            app4.resizable(width=False, height=False)
+            app4.grab_set()
+
+            Button(app4, text="GitHub - Link", background="#233237", foreground="#fff", font=("arial", 9, "bold"), command=lambda: webbrowser.open('https://github.com/paulo-hj/Calculadora-de-descontos_InterfaceGrafica')).place(x=36, y=45, width=80, height=35)
 
     app = Tk()
     app.title("BRCOM")
@@ -190,7 +226,8 @@ def principal():
     sobremenu = Menu(barramenus)
     sobremenu = Menu(sobremenu, tearoff=0) #Tira um tracejado que vem por padrão nos menu.
     barramenus.add_cascade(label="Sobre", menu=sobremenu)
-    sobremenu.add_command(label="Empresa", command=sobredados)
+    sobremenu.add_command(label="Código fonte", command=senha)
+    sobremenu.add_command(label="Sobre", command=sobredados)
 
     app.config(menu=barramenus)
     ######################
